@@ -43,10 +43,6 @@ app.get("/countries/:continentCode", async (req: Request, res: Response) => {
     .from(countries)
     .where(eq(countries.continentId, continentResult[0].continentId));
 
-  // const result = await countryRepo.findWhere({
-  //   fields: { continentId: eq(continentResult.data.continentId) }
-  // });
-
   if (result) {
     res.json(result);
   } else if (!result) {
@@ -88,9 +84,9 @@ app.get(
       .where(eq(countries.continentId, continentResult[0].continentId))
       .orderBy(
         orderByDirection(orderBy ? countries[orderBy] : countries.countryName)
-      ) // order by is mandatory
-      .limit(pageSize as unknown as number) // the number of rows to return
-      .offset(skip); // the number of rows to skip;
+      )
+      .limit(pageSize as unknown as number)
+      .offset(skip);
 
     if (!countryResult) {
       res.status(404).json({
@@ -134,15 +130,14 @@ async function configureDatabase(): Promise<boolean> {
     console.log("Database seeding setup ok?:", seedersRunSuccessfully);
     return Promise.resolve(seedersRunSuccessfully);
   } catch (err) {
-    console.error("Error setting up the database", err);
+    console.error("Error seeding up the database", err);
     return Promise.resolve(false);
   }
 }
 
 configureDatabase().then((result) => {
   app.listen(PORT, () => {
-    console.log("db setup ok?:", result);
-
+    console.log("Database seeding ok?:", result);
     console.log(`Server running at ${HOST}:${PORT} `);
   });
 });

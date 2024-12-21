@@ -54,7 +54,7 @@ Install the required packages via standard command:
 npm run db:migration:deploy
 ```
 
-### 5) Populate database with data using Drizzle ORM data seeding using npm script (or just run the application and it will create the schema for you)
+### 5) Populate database with data using Drizzle ORM data seeding using npm script (or just run the application and it will seed the database for you)
 
 ```
 npm run db:seeders:deploy
@@ -98,16 +98,9 @@ npm run cypress:run
 
 ### 8 Inspiration and Read More
 
+- https://orm.drizzle.team/
+
 - [Fireship Video](https://www.youtube.com/watch?v=i_mAHOhpBSA)
 
-https://brockherion.dev/blog/posts/dynamic-where-statements-in-drizzle/
-
-- https://gist.github.com/cayter/49d5c256a885d90c399ca6c1eca19f51
-
-- https://www.answeroverflow.com/m/1147439990683488268
-
-- https://orm.drizzle.team/docs/dynamic-query-building
-
-- https://khalilstemmler.com/articles/typescript-domain-driven-design/repository-dto-mapper/
-
 - https://medium.com/nerd-for-tech/how-to-create-a-postgresql-database-with-docker-compose-and-manipulate-with-drizzle-orm-80412155445c
+
