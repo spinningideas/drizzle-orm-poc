@@ -104,3 +104,14 @@ npm run cypress:run
 
 - https://medium.com/nerd-for-tech/how-to-create-a-postgresql-database-with-docker-compose-and-manipulate-with-drizzle-orm-80412155445c
 
+
+### 9 View Database Data
+
+Drizzle Studio allows you to view database data and if you run the npm script below you will be able to view the data locally using this url: https://local.drizzle.studio/
+
+See https://orm.drizzle.team/docs/studio
+
+```
+npm run db:studio
+```
+

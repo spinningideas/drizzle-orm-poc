@@ -9,7 +9,7 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "db:migration:deploy": "drizzle-kit migrate",
-    "db:seeders:deploy": "ts-node-dev --respawn src/db/seeders/seed.ts",
+    "db:seeders:deploy": "ts-node-dev src/db/seeders/seed.ts",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "cypress:open": "cypress open",
