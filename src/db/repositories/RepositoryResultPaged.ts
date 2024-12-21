@@ -9,15 +9,15 @@ export class RepositoryResultPaged<DataType> {
   constructor(
     public success: boolean,
     public data: DataType,
-    public error: string[] | undefined,
+    public errors: string[] | undefined,
     public currentPage: number,
     public totalPages: number,
     public totalItems: number
   ) {
-    if (success && error) {
+    if (success && errors) {
       throw new Error("Successful result must not contain an error");
     }
-    if (!success && !error) {
+    if (!success && !errors) {
       throw new Error("Unsuccessful result must contain an error");
     }
   }

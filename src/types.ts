@@ -1,8 +1,7 @@
-import { InferModel } from 'drizzle-orm';
 import { continents, countries } from './db/schema';
 
-export type Continent = InferModel<typeof continents>;
-export type Country = InferModel<typeof countries>;
+export type Continent = typeof continents.$inferSelect;
+export type Country = typeof countries.$inferSelect;
 
-export type NewContinent = InferModel<typeof continents, 'insert'>;
-export type NewCountry = InferModel<typeof countries, 'insert'>;
+export type NewContinent = typeof continents.$inferInsert;
+export type NewCountry = typeof countries.$inferInsert;

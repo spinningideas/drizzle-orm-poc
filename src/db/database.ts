@@ -1,7 +1,9 @@
+import 'dotenv/config' // populate process.env for imported files
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
 import { env } from '../utils';
 import * as schema from './schema';
+
 
 const pool = new Pool({
   user: env('DB_USER'),
@@ -11,4 +13,4 @@ const pool = new Pool({
   port: parseInt(env('DB_PORT') || '5432'),
 });
 
-export const db = drizzle(pool, { schema });
+export const database = drizzle(pool, { schema });

@@ -15,12 +15,12 @@ export class Result<DataType, ErrorType> {
   constructor(
     public success: boolean,
     public data: DataType,
-    public error: ErrorType
+    public errors: ErrorType
   ) {
-    if (success && error) {
+    if (success && errors) {
       throw new Error("Successful result must not contain an error");
     }
-    if (!success && !error) {
+    if (!success && !errors) {
       throw new Error("Unsuccessful result must contain an error");
     }
   }

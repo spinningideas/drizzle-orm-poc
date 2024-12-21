@@ -1,15 +1,23 @@
-import type { Config } from 'drizzle-kit';
-import { env } from './src/utils';
+import { Config, defineConfig } from "drizzle-kit";
+import { env } from "./src/utils";
 
-export default {
-  schema: './src/db/schema.ts',
-  out: './src/db/migrations',
-  driver: 'pg',
+const dbServer = env("DB_SERVER");
+const dbPort = env("DB_PORT");
+const dbUser = env("DB_USER");
+const dbPassword = env("DB_PASSWORD");
+const dbName = env("DB_NAME");
+const dbUrl = `postgresql://${dbUser}:${dbPassword}@${dbServer}:${dbPort}/${dbName}`;
+
+export default defineConfig({
+  dialect: "postgresql",
+  schema: "./src/db/schema.ts",
+  out: "./src/db/migrations",
   dbCredentials: {
-    user: env('DB_USER'),
-    password: env('DB_PASSWORD'),
-    host: env('DB_SERVER'),
-    database: env('DB_NAME'),
-    port: parseInt(env('DB_PORT') || '5432'),
+    url: dbUrl,
   },
-} satisfies Config;
+  migrations: {
+    prefix: "none",
+    table: "__migrations__",
+    schema: "public",
+  },
+} as Config);

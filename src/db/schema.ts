@@ -1,4 +1,4 @@
-import { pgTable, uuid, varchar, integer, decimal, foreignKey } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, varchar, integer, decimal } from 'drizzle-orm/pg-core';
 
 export const continents = pgTable('continents', {
   continentId: uuid('continent_id').primaryKey().defaultRandom(),

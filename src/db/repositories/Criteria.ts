@@ -5,15 +5,15 @@
  * { field: string, value: any, condition: { [Op.*]: * }
  * Op stands for sequelize operator symbol
  * @example
- * const { Op } = require('sequelize')
  * const criteria = new Criteria([{ field: 'some_id', value: 1234, condition: { [Op.eq]: 1234 }])
  * criteria.getCriteria() // -> { some_id: { [Op.eq] : 1234 } }
  * await myRepository.findAllWhere(criteria) // -> [{ some_id: 1234 }]
  */
 export class Criteria {
   private condition: any;
+  public fields: any;
 
-  constructor(...conditions: any) {
+  constructor(fields?: any, ...conditions: any) {
     const condition = {} as any;
     Object.values(conditions).forEach((val: any) => {
       if (!this.isEmpty(val.value)) {
@@ -21,6 +21,7 @@ export class Criteria {
       }
     });
     this.condition = condition;
+    this.fields = fields;
   }
 
   getCriteria() {
